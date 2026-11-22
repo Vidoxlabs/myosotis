@@ -22,6 +22,13 @@ Label: `specified` (shape), `implemented` (validation in `src/records.mjs`).
 | `active-thread` | Working context for the current conversation. | No — ephemeral, never promoted silently. |
 | `unconfirmed` | An observation not yet established. | No — but it stays marked unconfirmed. |
 
+## Stored fields
+
+`admitMemory` adds, on the stored record: `digest` (64-hex SHA-256 of `text`),
+`supersedes` (the id this record corrects, or `null`), `state` (`active` or
+`superseded`), `admittedEpoch`, and, once superseded, `supersededBy`. An id is used once
+in a store, including an id that is now a tombstone.
+
 ## Validation rules
 
 1. A record must have a non-empty `id`, `text`, and `scope`.

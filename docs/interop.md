@@ -13,7 +13,7 @@ Mapping onto myosotis's contracts:
 | Bloom behavior | Myosotis contract |
 | :--- | :--- |
 | Add note → durable, scoped | `memoryRecord` with `scope` required; admission through the consent check when personal. |
-| Forget → removes the note | `forgetMemory` hit: remove from store. |
+| Forget → removes the note | `forgetMemory` hit, confirmed and keyed: remove from store, with what it superseded, and leave digest-only tombstones. |
 | Forget → invalidates cached recall | The epoch bump: every projection stamped earlier is stale and fails closed. |
 | Forget → stops an active run | Out of myosotis's province: run control belongs to the harness, which consults the store's stamp. |
 | Forget → withholds earlier outputs from future prompts | Same epoch discipline: a projection built before the forget never serves again. |

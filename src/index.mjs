@@ -21,7 +21,7 @@ export {
   recallCurrent,
 } from './forget.mjs';
 
-export const VERSION = '0.3.0';
+export const VERSION = '0.4.0';
 
 export function about() {
   const lines = [
@@ -31,8 +31,9 @@ export function about() {
     'modules:',
     '  records  memory record shape and the closed set of classes',
     '  consent  grants, revocations ordered by sequence, re-consent, and the consent state',
-    '  forget   the store state machine: admission, the structural forget, the epoch,',
-    '           and stamped projections that refuse to serve once stale',
+    '  forget   the store state machine: admission and supersede, the confirmed and keyed',
+    '           forget with digest-only tombstones, the epoch, and stamped projections',
+    '           of ids and digests that refuse to serve once stale',
     '',
     'memory classes: organizational, personal-consented, active-thread, unconfirmed',
     'fail-closed rule: a projection whose stamp is stale is refused, never served',

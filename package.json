@@ -1,6 +1,6 @@
 {
   "name": "@vidoxlabs/myosotis",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Governed memory for agents: consent to keep, structural forget.",
   "type": "module",
   "main": "src/index.mjs",

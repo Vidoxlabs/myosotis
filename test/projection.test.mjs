@@ -44,7 +44,7 @@ test('a current projection is served', () => {
 test('a projection built before a forget is refused, and serves nothing', () => {
   const store = storeWith('secret-1', 'o-2');
   const before = buildProjection(store);
-  const { store: after } = forgetMemory(store, 'secret-1');
+  const { store: after } = forgetMemory(store, { id: 'secret-1', confirmed: true, key: 'forget-secret-1' });
   const read = readProjection(after, before);
   assert.equal(read.status, 'refused');
   assert.equal(read.reason, 'stale');
@@ -82,7 +82,7 @@ test('recallCurrent serves a current projection unchanged', () => {
 test('recallCurrent rebuilds from the store instead of serving a stale projection', () => {
   const store = storeWith('secret-1', 'o-2');
   const before = buildProjection(store);
-  const { store: after } = forgetMemory(store, 'secret-1');
+  const { store: after } = forgetMemory(store, { id: 'secret-1', confirmed: true, key: 'forget-secret-1' });
   const recall = recallCurrent(after, before);
   assert.equal(recall.rebuilt, true);
   assert.equal(recall.projection.stamp, after.epoch);

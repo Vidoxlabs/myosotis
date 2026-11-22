@@ -139,7 +139,7 @@ test('a forget hit removes the record and bumps the epoch', () => {
   });
   assert.equal(store2.epoch, 0);
 
-  const forgotten = forgetMemory(store2, 'p-1');
+  const forgotten = forgetMemory(store2, { id: 'p-1', confirmed: true, key: 'forget-p-1' });
   assert.equal(forgotten.status, 'forgotten');
   assert.equal(forgotten.forgotten.id, 'p-1');
   assert.equal(forgotten.store.epoch, 1);
@@ -157,7 +157,7 @@ test('a forget miss is declared unknown with no state change and no epoch bump',
     kind: 'organizational',
     scope: 'design-team',
   });
-  const missed = forgetMemory(store1, 'not-there');
+  const missed = forgetMemory(store1, { id: 'not-there', confirmed: true, key: 'forget-not-there' });
   assert.equal(missed.status, 'unknown');
   assert.equal(missed.forgotten, null);
   assert.equal(missed.store.epoch, 0);
@@ -175,7 +175,7 @@ test('a projection is current only while its stamp matches; after a forget it is
   const stampBefore = projectionStamp(store1);
   assert.equal(projectionIsValid(store1, stampBefore), true);
 
-  const { store: afterForget } = forgetMemory(store1, 'o-1');
+  const { store: afterForget } = forgetMemory(store1, { id: 'o-1', confirmed: true, key: 'forget-o-1' });
   assert.equal(projectionIsValid(afterForget, stampBefore), false);
 
   // The stale projection refuses: rebuilding at the current stamp is valid again.
@@ -197,7 +197,7 @@ test('resurrection is structural: an old projection cannot serve past a forget',
   const staleProjection = recallAll(store1);
   const staleStamp = projectionStamp(store1);
 
-  const { store: afterForget } = forgetMemory(store1, 'secret-1');
+  const { store: afterForget } = forgetMemory(store1, { id: 'secret-1', confirmed: true, key: 'forget-secret-1' });
   // The old projection still holds the content in memory. The stamp is what
   // says it may not be served. A consumer honoring the contract refuses it.
   assert.equal(projectionIsValid(afterForget, staleStamp), false);
