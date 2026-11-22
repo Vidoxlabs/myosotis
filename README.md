@@ -6,7 +6,7 @@ Myosotis is the memory successor in the bloom agent family. It defines the contr
 
 ## Status
 
-Version 0.1.0. Contracts and modules only; nothing shipped runtime-wise. The record, consent, and forget rules are `implemented` as a tested reference library. A durable store, projection adapters, and any service shape are `specified` or `planned`, not built.
+Version 0.2.0. Contracts and modules only; nothing shipped runtime-wise. The record, consent, and forget rules are `implemented` as a tested reference library. A durable store, projection adapters, and any service shape are `specified` or `planned`, not built.
 
 ## Install
 
@@ -22,7 +22,7 @@ Requires Node >= 22.13. Zero runtime dependencies.
 | :--- | :--- | :--- |
 | `records.mjs` | Memory record shape and the closed set of memory classes: organizational, personal-consented, active-thread, unconfirmed. | `implemented` |
 | `consent.mjs` | Consent grants and revocations, and the state that answers whether a scope currently has consent. | `implemented` |
-| `forget.mjs` | The memory store state machine: admission, the structural forget, and the epoch that makes stale projections fail closed. | `implemented` |
+| `forget.mjs` | The memory store state machine: admission, the structural forget, the epoch, and stamped projections that are refused once stale and rebuilt before they serve. | `implemented` |
 
 ## Why the classes stay distinguishable
 

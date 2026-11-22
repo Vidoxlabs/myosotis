@@ -64,3 +64,38 @@ export function projectionIsValid(store, stamp) {
   // Fail closed: only a stamp that equals the current epoch is current.
   return stamp === store.epoch;
 }
+
+// A projection is a frozen recall list stamped with the epoch it was built at.
+export function buildProjection(store) {
+  return Object.freeze({ stamp: projectionStamp(store), records: recallAll(store) });
+}
+
+function verifiable(projection) {
+  return projection !== null
+    && typeof projection === 'object'
+    && Number.isSafeInteger(projection.stamp)
+    && projection.stamp >= 0
+    && Array.isArray(projection.records);
+}
+
+// Serve a projection only while it is current. A stale stamp, a stamp from the
+// future, or a projection whose stamp cannot be verified is refused, and a
+// refusal carries no records: there is no partial or warned serve.
+export function readProjection(store, projection) {
+  if (!verifiable(projection)) {
+    return { status: 'refused', reason: 'unverifiable', records: null, stamp: null, epoch: store.epoch };
+  }
+  if (!projectionIsValid(store, projection.stamp)) {
+    return { status: 'refused', reason: 'stale', records: null, stamp: projection.stamp, epoch: store.epoch };
+  }
+  return { status: 'current', records: projection.records, stamp: projection.stamp, epoch: store.epoch };
+}
+
+// Recall through a projection: serve it when current, otherwise rebuild from
+// the store first and serve the rebuild. Bypass and rebuild, never resurrect.
+export function recallCurrent(store, projection) {
+  const read = readProjection(store, projection);
+  if (read.status === 'current') return { projection, records: read.records, rebuilt: false };
+  const rebuilt = buildProjection(store);
+  return { projection: rebuilt, records: rebuilt.records, rebuilt: true };
+}

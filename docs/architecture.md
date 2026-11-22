@@ -28,7 +28,7 @@ The store is the ordered pair `{ epoch, records }`. The epoch is a monotonic cou
 
 ## Projections
 
-Anything derived from the store — a cache, an index, a recall list, a summary — is a projection carrying the stamp of the epoch it was built at. A projection is current only while its stamp equals the store's epoch. The moment the epoch moves, every prior projection is stale, and stale means refused: rebuild from the store, never serve from the stale copy. This is the discipline that makes forget-correctness structural rather than a matter of hoping every consumer cleaned up its cache.
+Anything derived from the store — a cache, an index, a recall list, a summary — is a projection carrying the stamp of the epoch it was built at. A projection is current only while its stamp equals the store's epoch. The moment the epoch moves, every prior projection is stale, and stale means refused: rebuild from the store, never serve from the stale copy. This is the discipline that makes forget-correctness structural rather than a matter of hoping every consumer cleaned up its cache. In `src/`, `readProjection` refuses a stale or unverifiable projection and serves no records with the refusal, and `recallCurrent` rebuilds from the store before serving, so a consumer that reads through them cannot serve forgotten content.
 
 ## What this edition is
 
