@@ -50,7 +50,7 @@ This repository is governed memory: consent, forget, and recall of the current p
 
 Forget removes the record and bumps the epoch. A projection stamped earlier fails closed. Do not add a path that serves a stale projection.
 
-## Where the other six live
+## Where the other seven live
 
 | The work | Repository |
 | --- | --- |
@@ -61,6 +61,7 @@ Forget removes the record and bumps the epoch. A projection stamped earlier fail
 | Tool faces, skills, hooks, cookbooks | `drosera` |
 | Probes over those libraries | `trellis` |
 | The team workspace a person opens | `bloom` |
+| Family documentation, synced from every public repository | `docs` |
 
 ## Skills
 
