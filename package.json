@@ -1,0 +1,27 @@
+{
+  "name": "@vidoxlabs/myosotis",
+  "version": "0.1.0",
+  "description": "A governed memory fabric: consent to keep, promise to forget. The memory successor in the bloom agent family.",
+  "type": "module",
+  "main": "src/index.mjs",
+  "scripts": {
+    "start": "node src/index.mjs",
+    "test": "node --test \"test/*.test.mjs\""
+  },
+  "engines": {
+    "node": ">=22.13"
+  },
+  "keywords": [
+    "memory",
+    "consent",
+    "forget",
+    "agent",
+    "local-first",
+    "governance"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Vidoxlabs/myosotis.git"
+  }
+}
