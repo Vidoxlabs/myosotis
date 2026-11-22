@@ -13,7 +13,7 @@ memory record ──► consent check ──► store (epoch N) ──► projec
 
 ## The memory record
 
-The unit of memory: `{ id, text, kind, scope }`. The `kind` is one of the closed set `organizational`, `personal-consented`, `active-thread`, `unconfirmed`. The `scope` names who the memory belongs to — a team, a channel, a person's space. A record without a scope is invalid; memory that belongs to no one in particular is how leaks start.
+Every record has `{ id, text, kind, scope }`. The `kind` is one of `organizational`, `personal-consented`, `active-thread`, or `unconfirmed`. The `scope` names who the memory belongs to, such as a team, a channel, or a person's space. A personal record also carries its sensitivity and explicit confirmation provenance.
 
 ## The consent registry
 

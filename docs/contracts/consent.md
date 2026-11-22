@@ -17,7 +17,7 @@ state { grants, revocations }           — answers hasConsentFor(scope)
 3. **Revocation is immediate and permanent.** A revoked grant no longer permits admission, ever. Re-consent is a new grant after the revocation, on the record.
 
    `implemented` in `src/consent.mjs`. Order on the record is a `sequence`: a non-negative integer on a grant or a revocation, `null` when not given. A revocation kills a grant for the same subject and scope unless both carry a sequence and the grant's is strictly later; that later grant is re-consent. On a tie, or when either side has no sequence, the revocation wins. A revoked grant never comes back, because its own sequence does not change: only a new grant with a later sequence permits admission again.
-4. **Consent gates admission, not existence.** The check happens when a `personal-consented` record knocks on the store. What is already inside is the forget contract's business: revoking consent should lead the owner to forgetting what was kept under it.
+4. **Consent gates admission, not existence.** A `personal-consented` record must pass [record validation](records.md) and have a live grant before the store admits it. Revoking consent stops new admission under that grant. The forget contract governs records already in the store.
 5. **No implied consent.** Long conversation, friendly tone, repeated asks — none of it grants anything. Only a grant record grants.
 
 ## What consent does not cover

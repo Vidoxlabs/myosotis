@@ -5,6 +5,7 @@ import assert from 'node:assert/strict';
 
 import {
   MEMORY_KINDS,
+  MemoryRecordError,
   memoryRecord,
   requiresConsent,
   consentGrant,
@@ -12,11 +13,14 @@ import {
   consentState,
   openStore,
   admitMemory,
+  buildProjection,
   forgetMemory,
   recallAll,
   projectionStamp,
   projectionIsValid,
 } from '../src/index.mjs';
+
+const personalMetadata = { sensitivity: 'internal', provenance: { source: 'explicit-user' } };
 
 test('the set of memory kinds is exactly the four distinguishable classes', () => {
   assert.deepEqual([...MEMORY_KINDS].sort(), [
@@ -82,6 +86,7 @@ test('personal memory is refused admission without a live grant', () => {
     text: 'Ada prefers morning meetings.',
     kind: 'personal-consented',
     scope: 'ada-space',
+    ...personalMetadata,
   });
   assert.equal(denied.admitted, false);
   assert.match(denied.reason, /consent required/);
@@ -97,6 +102,7 @@ test('personal memory is admitted with a live grant, and organizational without 
     text: 'Ada prefers morning meetings.',
     kind: 'personal-consented',
     scope: 'ada-space',
+    ...personalMetadata,
   });
   assert.equal(personal.admitted, true);
   assert.equal(personal.record.admittedEpoch, 0);
@@ -122,6 +128,47 @@ test('an invalid record is refused admission, not thrown into the store', () => 
   assert.equal(refused.store, store0);
 });
 
+test('personal memory needs an admissible sensitivity and explicit user provenance even with a live grant', () => {
+  const scope = 'personal-space';
+  const subject = 'principal-1';
+  const state = consentState({ grants: [consentGrant({ subject, scope, grantedBy: subject })] });
+  const store = openStore();
+  const personal = { id: 'p-1', text: 'Prefers a written agenda.', kind: 'personal-consented', scope };
+  for (const [metadata, issue] of [
+    [{ provenance: personalMetadata.provenance }, /sensitivity/],
+    [{ sensitivity: 'internal' }, /provenance/],
+    [{ ...personalMetadata, sensitivity: 'unknown' }, /sensitivity/],
+    [{ ...personalMetadata, provenance: { source: 'model-inferred' } }, /provenance/],
+  ]) {
+    const input = { ...personal, ...metadata };
+    assert.throws(() => memoryRecord(input), MemoryRecordError);
+    const result = admitMemory(store, state, input);
+    assert.equal(result.admitted, false);
+    assert.equal(result.store, store);
+    assert.match(result.reason, issue);
+  }
+  for (const sensitivity of ['public', 'internal', 'restricted']) {
+    const provenance = { source: 'explicit-user' };
+    const result = admitMemory(store, state, { ...personal, sensitivity, provenance });
+    assert.equal(result.admitted, true);
+    assert.equal(result.record.sensitivity, sensitivity);
+    provenance.source = 'model-inferred';
+    assert.deepEqual(result.record.provenance, { source: 'explicit-user' });
+    assert.ok(Object.isFrozen(result.record.provenance));
+    const [entry] = buildProjection(result.store).records;
+    assert.deepEqual(entry, { id: personal.id, kind: personal.kind, scope, digest: result.record.digest, admittedEpoch: 0 });
+  }
+});
+
+test('nonpersonal memory kinds still admit without personal classification', () => {
+  for (const kind of ['organizational', 'active-thread', 'unconfirmed']) {
+    const result = admitMemory(openStore(), consentState({}), { id: 'm-1', text: 'Draft outline.', kind, scope: 'team' });
+    assert.equal(result.admitted, true);
+    assert.equal(Object.hasOwn(result.record, 'sensitivity'), false);
+    assert.equal(Object.hasOwn(result.record, 'provenance'), false);
+  }
+});
+
 test('a forget hit removes the record and bumps the epoch', () => {
   const grant = consentGrant({ subject: 'ada', scope: 'ada-space', grantedBy: 'ada' });
   const store0 = openStore();
@@ -130,6 +177,7 @@ test('a forget hit removes the record and bumps the epoch', () => {
     text: 'Ada prefers morning meetings.',
     kind: 'personal-consented',
     scope: 'ada-space',
+    ...personalMetadata,
   });
   const { store: store2 } = admitMemory(store1, consentState({}), {
     id: 'o-1',

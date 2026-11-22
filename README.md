@@ -6,7 +6,7 @@ Myosotis is the memory member of the bloom agent family. It holds the contracts 
 
 ## Status
 
-Version 0.4.0. Contracts and modules only; nothing shipped runtime-wise. The record, consent, and forget rules are `implemented` as a tested reference library. A durable store, projection adapters, and any service shape are `specified` or `planned`, not built.
+Version 1.0.0. The record, consent, and forget rules are `implemented` as a tested reference library. A durable store, projection adapters, and service interfaces remain `specified` or `planned`.
 
 ## Install
 
@@ -29,7 +29,7 @@ Requires Node >= 22.13. Zero runtime dependencies.
 The four memory classes never collapse into one bucket:
 
 - **organizational**: knowledge that belongs to a scope, like a team's working notes. Kept without personal consent because it is not about a person.
-- **personal-consented**: memory about a person. Admitted only under a live consent record for the scope. No consent, no admission.
+- **personal-consented** requires a live grant for its scope, an admissible sensitivity, and provenance of the principal's explicit confirmation.
 - **active-thread**: working context for the conversation happening now. Ephemeral by nature, never promoted to durable silently.
 - **unconfirmed**: an observation that has not been established. Stays marked. Never presented as known.
 

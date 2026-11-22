@@ -60,7 +60,10 @@ test('revocation stays scoped to its own subject and scope', () => {
 });
 
 test('personal memory is admitted again only after re-consent', () => {
-  const record = { id: 'p-1', text: 'Ada prefers morning meetings.', kind: 'personal-consented', scope: 'ada-space' };
+  const record = {
+    id: 'p-1', text: 'Prefers morning meetings.', kind: 'personal-consented', scope: 'ada-space',
+    sensitivity: 'internal', provenance: { source: 'explicit-user' },
+  };
   const revoked = admitMemory(openStore(), consentState({ grants: [grantAt(1)], revocations: [revokeAt(2)] }), record);
   assert.equal(revoked.admitted, false);
   const reconsented = admitMemory(
