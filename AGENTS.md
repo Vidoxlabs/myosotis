@@ -43,3 +43,46 @@ This is a public repository. No hostnames, addresses, ports, cluster names, cont
 - `npm test` must stay green. A claim of `implemented` requires a passing test named for it.
 - Docs change with code or they do not change at all. There is no "docs later."
 - Every behavioral rule that matters must be visible in a test. If it cannot be tested, it is a wish, and it must be labeled `planned`, not `implemented`.
+
+## Stay in this province
+
+This repository is governed memory: consent, forget, and recall of the current projection. It is a peer. Seed is the floor. Capillary, aestivation, and drosera are the other peers. Bloom is the only composer. Trellis is outside the call path. This task does not edit them. It is not Bloom's notes table, not a retrieval index, and not a service. How records are stored stays inside this package.
+
+Forget removes the record and bumps the epoch. A projection stamped earlier fails closed. Do not add a path that serves a stale projection.
+
+## Where the other six live
+
+| The work | Repository |
+| --- | --- |
+| Run records, tool identity, provider shape | `seed` |
+| Bounded retrieval and relations | `capillary` |
+| Consent, forget, and recall | `myosotis` (here) |
+| Plans, verdicts, and the assembly gate | `aestivation` |
+| Tool faces, skills, hooks, cookbooks | `drosera` |
+| Probes over those libraries | `trellis` |
+| The team workspace a person opens | `bloom` |
+
+## Skills
+
+This file is the working method. A skill adds instructions and grants no consent and no forget. Do not add a second skill system here.
+
+## Agents
+
+One working method lives here. Do not add a roster, and do not edit a sibling from this checkout.
+
+## References
+
+Read in this order: this file, `docs/charter.md`, `docs/architecture.md`, `docs/contracts/`, `docs/interop.md`, then `src/`. Code and `npm test` win over a stale sentence.
+
+## Cookbook
+
+1. Read this file and the charter.
+2. Run `npm test`.
+3. Change a rule only together with the test that holds it.
+4. Stop at the province boundary in the table above.
+
+This recipe is instructions. This repository ships no tool pack.
+
+## MCP
+
+This repository is not an MCP server. Do not commit an MCP configuration, a server address, or a credential. A forget face, when one is packaged, is a drosera face. The connector is not in this repository.
