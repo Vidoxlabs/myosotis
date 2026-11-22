@@ -1,7 +1,7 @@
 {
   "name": "@vidoxlabs/myosotis",
   "version": "0.3.0",
-  "description": "A governed memory fabric: consent to keep, promise to forget. The memory successor in the bloom agent family.",
+  "description": "Governed memory for agents: consent to keep, structural forget.",
   "type": "module",
   "main": "src/index.mjs",
   "scripts": {
