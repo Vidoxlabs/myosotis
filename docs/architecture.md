@@ -17,7 +17,7 @@ The unit of memory: `{ id, text, kind, scope }`. The `kind` is one of the closed
 
 ## The consent registry
 
-Grants and revocations over scopes. In this edition, consent is personal: the subject of the memory grants it. A grant says "personal memory in this scope is permitted." A revocation kills the grant. The check is plain: a `personal-consented` record is admissible only while a live grant for its scope exists. Every other class is admitted without personal consent because none of them are personal memory — but scope is still required.
+Grants and revocations over scopes. In this edition, consent is personal: the subject of the memory grants it. A grant says "personal memory in this scope is permitted." A revocation kills the grant. A later grant, ordered on the record by its sequence, is re-consent. The check is plain: a `personal-consented` record is admissible only while a live grant for its scope exists. Every other class is admitted without personal consent because none of them are personal memory — but scope is still required.
 
 ## The store and the epoch
 

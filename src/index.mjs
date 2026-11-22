@@ -21,7 +21,7 @@ export {
   recallCurrent,
 } from './forget.mjs';
 
-export const VERSION = '0.2.0';
+export const VERSION = '0.3.0';
 
 export function about() {
   const lines = [
@@ -30,7 +30,7 @@ export function about() {
     '',
     'modules:',
     '  records  memory record shape and the closed set of classes',
-    '  consent  grants, revocations, and the consent state',
+    '  consent  grants, revocations ordered by sequence, re-consent, and the consent state',
     '  forget   the store state machine: admission, the structural forget, the epoch,',
     '           and stamped projections that refuse to serve once stale',
     '',
