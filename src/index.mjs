@@ -20,8 +20,9 @@ export {
   readProjection,
   recallCurrent,
 } from './forget.mjs';
+export { RecallError, recallBounded } from './recall.mjs';
 
-export const VERSION = '1.0.0';
+export const VERSION = '1.1.0';
 
 export function about() {
   const lines = [
@@ -34,6 +35,7 @@ export function about() {
     '  forget   the store state machine: admission and supersede, the confirmed and keyed',
     '           forget with digest-only tombstones, the epoch, and stamped projections',
     '           of ids and digests that refuse to serve once stale',
+    '  recall   selection from supplied records, with checked counts and a character limit',
     '',
     'memory classes: organizational, personal-consented, active-thread, unconfirmed',
     'fail-closed rule: a projection whose stamp is stale is refused, never served',

@@ -8,7 +8,7 @@ export const MEMORY_KINDS = Object.freeze(
   new Set(['organizational', 'personal-consented', 'active-thread', 'unconfirmed'])
 );
 
-const ADMISSIBLE_SENSITIVITY = ['public', 'internal', 'restricted'];
+export const ADMISSIBLE_SENSITIVITY = Object.freeze(['public', 'internal', 'restricted']);
 
 export class MemoryRecordError extends Error {
   constructor(issues) {

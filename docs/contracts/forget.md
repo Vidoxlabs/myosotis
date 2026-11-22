@@ -58,7 +58,28 @@ Every projection of memory — a recall cache, an index, a summary built for a p
 - Never serve from a stale projection while rebuilding; rebuild first, then serve.
 - Never treat "forgotten" as "hidden but keepable." The record is gone from the store; a projection of it is not a copy that was set aside, it is an artifact whose source died.
 
+## Bounded recall
+
+`recallBounded({ records, maxChars = 6000, counts? })` selects from the records the
+caller supplies. When reading from a store, pass the current records resolved by
+`recallCurrent` or `recallAll`. A digest-only projection entry carries no text to select.
+
+`candidateCount` counts the supplied records. `policyEligibleCount` counts entries
+with a nonempty id and text, an allowed sensitivity (`public`, `internal`, or
+`restricted`), and an active state when a state is supplied. The function keeps
+whole eligible records in input order, skipping entries that exceed the remaining
+budget. `selectedCount` and `usedChars` describe the returned `records`.
+
+`maxChars` must be a positive integer. The returned `maxChars` is the smaller of the
+requested limit and the library ceiling of 6000, measured by JavaScript string length.
+If the caller provides `counts`, all three counts must be nonnegative integers with
+`selectedCount <= policyEligibleCount <= candidateCount`. They must also match the
+actual selection. A count or budget refusal throws `RecallError`.
+
 ## Changes
+
+- `1.1.0` — adds bounded recall over caller-held records, with sensitivity filtering,
+  a character limit, and checked count reporting.
 
 - `0.4.0` — breaking. `forgetMemory` takes `{ id, confirmed, key }`; a bare id is
   refused and changes nothing. Forget erases the supersede chain with digest-only
