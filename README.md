@@ -50,6 +50,7 @@ Myosotis is one of five named projects that share one design law — ordinary bo
 | `myosotis` (this repo) | Governed memory: consent to keep, promise to forget. |
 | [`aestivation`](https://github.com/Vidoxlabs/aestivation) | Plan proposal, deterministic validation, review verdicts, and the gate that holds assembly. |
 | [`drosera`](https://github.com/Vidoxlabs/drosera) | The tooling fabric: tool faces, skills, hooks, cookbooks. |
+| [`trellis`](https://github.com/Vidoxlabs/trellis) | The testing lattice: multi-point probes over the family. |
 | [`bloom`](https://github.com/Vidoxlabs/bloom) | The agent harness the family serves: an environment where agents run. |
 
 ## Documentation
