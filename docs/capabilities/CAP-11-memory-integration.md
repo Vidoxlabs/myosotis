@@ -62,9 +62,9 @@ No standalone events are introduced by `CAP-11`; context packet assembly emits `
 
 ## Slices
 
-- `CAP-11.1` (`myosotis`, `proposed`): Experience receipt record rules and fail-closed strict recall policy.
-- `CAP-11.2` (`capillary`, `proposed`): Epoch-guarded packet integration with typed memory kinds and provenance.
-- `CAP-11.3` (`bloom`, `proposed`): Thread continuity, consent enforcement, and digest-only trace logging.
+- `CAP-11.1` (`myosotis`, `M3`, `proposed`): Experience receipt record rules and fail-closed strict recall policy.
+- `CAP-11.2` (`capillary`, `M3`, `proposed`): Epoch-guarded packet integration with typed memory kinds and provenance.
+- `CAP-11.3` (`bloom`, `M3`, `proposed`): Thread continuity, consent enforcement, and digest-only trace logging.
 
 ## Non-goals
 
@@ -92,3 +92,4 @@ No standalone events are introduced by `CAP-11`; context packet assembly emits `
 ## Changes
 
 - `2026-11-23`: Initial Phase 0 specification (`CAP-01`).
+- `2026-11-23`: Added `M3` slice milestones (`CAP-01`, review fixes).

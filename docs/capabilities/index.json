@@ -12,13 +12,16 @@
         {
           "id": "CAP-01.4",
           "title": "Myosotis capability docs and memory integration spec",
+          "milestone": "M0",
           "status": "in-progress"
         }
       ],
       "toolIds": [],
       "contracts": [],
       "tests": [],
-      "prs": [],
+      "prs": [
+        "myosotis#1"
+      ],
       "commits": [],
       "adr": [],
       "decision": null,
@@ -34,6 +37,7 @@
         {
           "id": "CAP-02.4",
           "title": "Self-test test/capabilities.test.mjs in myosotis",
+          "milestone": "M2",
           "status": "proposed"
         }
       ],
@@ -56,6 +60,19 @@
         {
           "id": "CAP-11.1",
           "title": "Experience receipt record rules and fail-closed strict recall policy",
+          "milestone": "M3",
+          "status": "proposed"
+        },
+        {
+          "id": "CAP-11.2",
+          "title": "Epoch-guarded packet integration with typed memory kinds and provenance",
+          "milestone": "M3",
+          "status": "proposed"
+        },
+        {
+          "id": "CAP-11.3",
+          "title": "Thread continuity, consent enforcement, and digest-only trace logging",
+          "milestone": "M3",
           "status": "proposed"
         }
       ],
