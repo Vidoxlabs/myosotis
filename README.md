@@ -6,7 +6,7 @@ Myosotis is the memory member of the bloom agent family. It holds the contracts 
 
 ## Status
 
-Version 1.1.0. The record, consent, forget, and bounded recall rules are `implemented` as a tested reference library. A durable store, projection adapters, and service interfaces remain `specified` or `planned`.
+Version 1.2.0. The record, consent, forget, bounded recall, and in-process continuity rules are `implemented` as a tested reference library. A durable store, projection adapters, and service interfaces remain `specified` or `planned`.
 
 ## Install
 
@@ -24,6 +24,7 @@ Requires Node >= 22.13. Zero runtime dependencies.
 | `consent.mjs` | Consent grants and revocations, ordered by an optional sequence so a later grant is re-consent, and the state that answers whether a scope currently has consent. | `implemented` |
 | `forget.mjs` | The memory store state machine: admission and supersede, the confirmed and keyed forget that tombstones a whole supersede chain, the epoch, and stamped projections of identifiers and digests that are refused once stale and rebuilt before they serve. | `implemented` |
 | `recall.mjs` | Bounded selection from caller-held records, with sensitivity checks and candidate, eligible, and selected counts. | `implemented` |
+| `continuity.mjs` | One active continuity per subject, held in the process. Lookup never opens one, attach refuses any id that is not this subject's active id without saying why, and isolate opens a new active id. | `implemented` |
 
 ## Why the classes stay distinguishable
 

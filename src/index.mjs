@@ -21,8 +21,15 @@ export {
   recallCurrent,
 } from './forget.mjs';
 export { RecallError, recallBounded } from './recall.mjs';
+export {
+  ContinuityError,
+  openContinuity,
+  lookupContinuity,
+  attachContinuity,
+  isolateContinuity,
+} from './continuity.mjs';
 
-export const VERSION = '1.1.0';
+export const VERSION = '1.2.0';
 
 export function about() {
   const lines = [
@@ -36,6 +43,8 @@ export function about() {
     '           forget with digest-only tombstones, the epoch, and stamped projections',
     '           of ids and digests that refuse to serve once stale',
     '  recall   selection from supplied records, with checked counts and a character limit',
+    '  continuity  one active continuity per subject, held in the process: lookup never',
+    '           opens one, attach refuses any id that is not active, isolate opens a new one',
     '',
     'memory classes: organizational, personal-consented, active-thread, unconfirmed',
     'fail-closed rule: a projection whose stamp is stale is refused, never served',
