@@ -42,6 +42,7 @@ This is a public repository. No hostnames, addresses, ports, cluster names, cont
 
 - `npm test` must stay green. A claim of `implemented` requires a passing test named for it.
 - Docs change with code or they do not change at all. There is no "docs later."
+- Same-PR ledger rule: update `docs/capabilities/index.json`, the owning capability spec, `docs/CHANGELOG.md`, and affected contract `Changes` sections in the same pull request as any capability change.
 - Every behavioral rule that matters must be visible in a test. If it cannot be tested, it is a wish, and it must be labeled `planned`, not `implemented`.
 
 ## Stay in this province
@@ -73,7 +74,7 @@ One working method lives here. Do not add a roster, and do not edit a sibling fr
 
 ## References
 
-Read in this order: this file, `docs/charter.md`, `docs/architecture.md`, `docs/contracts/`, `docs/interop.md`, then `src/`. Code and `npm test` win over a stale sentence.
+Read in this order: this file, `docs/charter.md`, `docs/architecture.md`, `docs/contracts/`, `docs/interop.md`, `docs/capabilities/`, then `src/`. Code and `npm test` win over a stale sentence.
 
 ## Cookbook
 
