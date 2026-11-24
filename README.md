@@ -1,3 +1,10 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/myosotis-banner-dark.svg">
+  <img src=".github/assets/myosotis-banner.svg" alt="Myosotis banner: a five-petal forget-me-not, and the tagline Memory that keeps only what you allow." width="1280">
+</picture>
+
+Memory that keeps only what you allow
+
 # myosotis
 
 Governed memory for agents: consent to keep, structural forget.
@@ -75,3 +82,5 @@ Tests use the Node built-in runner. Adding a rule means adding the test that hol
 ## License
 
 MIT
+
+The Vidoxlabs name and mark are trademarks of Vidoxlabs LLC. They are not covered by this repository's MIT license.
