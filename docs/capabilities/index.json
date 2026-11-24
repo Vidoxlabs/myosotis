@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "repo": "myosotis",
+  "entries": [
+    {
+      "id": "CAP-01",
+      "role": "touches",
+      "status": "in-progress",
+      "claim": "planned",
+      "spec": "docs/docs/capabilities/CAP-01-development-timeline-ledger.md",
+      "slices": [
+        {
+          "id": "CAP-01.4",
+          "title": "Myosotis capability docs and memory integration spec",
+          "milestone": "M0",
+          "status": "in-progress"
+        }
+      ],
+      "toolIds": [],
+      "contracts": [],
+      "tests": [],
+      "prs": [
+        "myosotis#1"
+      ],
+      "commits": [],
+      "adr": [],
+      "decision": null,
+      "updated": "2026-11-23"
+    },
+    {
+      "id": "CAP-02",
+      "role": "touches",
+      "status": "proposed",
+      "claim": "planned",
+      "spec": "docs/docs/capabilities/CAP-02-docs-freshness-check.md",
+      "slices": [
+        {
+          "id": "CAP-02.4",
+          "title": "Self-test test/capabilities.test.mjs in myosotis",
+          "milestone": "M2",
+          "status": "proposed"
+        }
+      ],
+      "toolIds": [],
+      "contracts": [],
+      "tests": [],
+      "prs": [],
+      "commits": [],
+      "adr": [],
+      "decision": null,
+      "updated": "2026-11-23"
+    },
+    {
+      "id": "CAP-11",
+      "role": "lead",
+      "status": "proposed",
+      "claim": "planned",
+      "spec": "docs/capabilities/CAP-11-memory-integration.md",
+      "slices": [
+        {
+          "id": "CAP-11.1",
+          "title": "Experience receipt record rules and fail-closed strict recall policy",
+          "milestone": "M3",
+          "status": "proposed"
+        },
+        {
+          "id": "CAP-11.2",
+          "title": "Epoch-guarded packet integration with typed memory kinds and provenance",
+          "milestone": "M3",
+          "status": "proposed"
+        },
+        {
+          "id": "CAP-11.3",
+          "title": "Thread continuity, consent enforcement, and digest-only trace logging",
+          "milestone": "M3",
+          "status": "proposed"
+        }
+      ],
+      "toolIds": [],
+      "contracts": [
+        "docs/contracts/records.md",
+        "docs/contracts/consent.md",
+        "docs/contracts/forget.md",
+        "docs/contracts/continuity.md"
+      ],
+      "tests": [],
+      "prs": [],
+      "commits": [],
+      "adr": [],
+      "decision": null,
+      "updated": "2026-11-23"
+    }
+  ]
+}
