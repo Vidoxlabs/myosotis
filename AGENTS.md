@@ -1,3 +1,5 @@
+<!-- Managed file. Propose changes by pull request; they are carried into the shared templates. hash: cf73f7499e3ea8fa -->
+
 # Myosotis workspace
 
 ## What this is
