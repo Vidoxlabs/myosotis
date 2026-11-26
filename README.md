@@ -9,7 +9,7 @@ Memory that keeps only what you allow
 
 Governed memory for agents: consent to keep, structural forget.
 
-Myosotis is the memory member of the bloom agent family. It holds the contracts and reference modules for agent memory where two promises sit on the face of the thing: memory is only kept under proper consent, and a real forget is structural. A forget invalidates every projection built before it and withholds forgotten content from later reads. A stale projection fails closed; it never resurrects.
+Myosotis is the memory system of Vivarium, the personal agent platform. It holds the contracts and reference modules for agent memory where two promises sit on the face of the thing: memory is only kept under proper consent, and a real forget is structural. A forget invalidates every projection built before it and withholds forgotten content from later reads. A stale projection fails closed; it never resurrects.
 
 ## Status
 
@@ -50,7 +50,7 @@ A forget that only deletes a row leaves every cached copy of that row alive. Myo
 
 ## The family
 
-The family follows one design law: ordinary botanical words for public products, mirroring five flower-named personas.
+Vivarium is the product. Its systems follow one naming law: ordinary botanical words that say what each system does.
 
 | Name | Province |
 | :--- | :--- |
@@ -60,7 +60,8 @@ The family follows one design law: ordinary botanical words for public products,
 | [`aestivation`](https://github.com/Vidoxlabs/aestivation) | Plans, verdicts, and the gate before assembly |
 | [`drosera`](https://github.com/Vidoxlabs/drosera) | Tool faces, skills, hooks, cookbooks |
 | [`trellis`](https://github.com/Vidoxlabs/trellis) | Multi-point testing with dated evidence |
-| [`bloom`](https://github.com/Vidoxlabs/bloom) | The team workspace harness |
+| [`bloom`](https://github.com/Vidoxlabs/bloom) | Vivarium's user interface: the app a person opens |
+| [`vivarium`](https://github.com/Vidoxlabs/vivarium) | The product's umbrella: pins the seven systems at exact commits |
 | [`docs`](https://github.com/Vidoxlabs/docs) | Family documentation, synced from every public repository |
 
 ## Documentation
